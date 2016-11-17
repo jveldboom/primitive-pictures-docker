@@ -15,6 +15,8 @@ docker run -v $(pwd):/tmp primitive -i input.jpg -o output.jpg -n 200
 View [offical docs](https://github.com/fogleman/primitive) for the complete list of flags.
 
 ## Sample Output
+Options: `docker run --rm -v $(pwd):/tmp primitive -i twins.jpg -o out.gif -n 500 -m 8`
+
 ![image](sample.gif)
 *Our twins and their toys*
 

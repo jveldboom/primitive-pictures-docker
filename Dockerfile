@@ -1,6 +1,6 @@
-FROM golang:1.6.3
+FROM golang:1.7.3-alpine
 
-RUN go get -u github.com/fogleman/primitive
+RUN apk add --no-cache git && go get -u github.com/fogleman/primitive
 
 WORKDIR /tmp
 

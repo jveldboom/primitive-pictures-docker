@@ -8,10 +8,9 @@ Reproducing images with geometric primitives. https://github.com/fogleman/primit
 ```
 docker build -t primitive -f Dockerfile .
 docker run -v $(pwd):/tmp primitive -i input.jpg -o output.jpg -n 200
-
 ```
 
 View [offical docs](https://github.com/fogleman/primitive) for the complete list of flags.
 
 ## TODO
-- Shrink image size (700MB wat?)
+- ~~Shrink image size (700MB wat?)~~ Down to 292MB but love to get it smaller if possible

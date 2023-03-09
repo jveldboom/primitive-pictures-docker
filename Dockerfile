@@ -1,6 +1,6 @@
-FROM golang:1.7.3-alpine
+FROM golang:1.20-alpine
 
-RUN apk add --no-cache git && go get -u github.com/fogleman/primitive
+RUN apk add --no-cache git imagemagick && go install github.com/fogleman/primitive@master
 
 WORKDIR /tmp
 

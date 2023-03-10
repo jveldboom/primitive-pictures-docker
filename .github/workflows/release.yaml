@@ -46,7 +46,7 @@ jobs:
 
       - name: Update Major Tag
         env:
-          MAJOR: ${{ steps.version.outputs.major-with-prefix }}
+          MAJOR: ${{ steps.version.outputs.major }}
         run: |
           git tag -d "${MAJOR}" || true
           git push origin ":refs/tags/${MAJOR}"

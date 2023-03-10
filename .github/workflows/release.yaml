@@ -31,7 +31,6 @@ jobs:
         run: |
           docker build . \
             --tag ghcr.io/${GITHUB_REPOSITORY}:${{ steps.version.outputs.version }} \
-            --tag ghcr.io/${GITHUB_REPOSITORY}:${{ steps.version.outputs.major }} \
             --tag ghcr.io/${GITHUB_REPOSITORY}:latest
 
           docker push --all-tags ghcr.io/${GITHUB_REPOSITORY}
@@ -40,15 +39,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "${{ steps.version.outputs.version-with-prefix }}" \
+          gh release create "${{ steps.version.outputs.version }}" \
             --generate-notes \
             --target "${{ github.sha }}"
-
-      - name: Update Major Tag
-        env:
-          MAJOR: ${{ steps.version.outputs.major }}
-        run: |
-          git tag -d "${MAJOR}" || true
-          git push origin ":refs/tags/${MAJOR}"
-          git tag "${MAJOR}" "${GITHUB_SHA}"
-          git push origin "${MAJOR}"

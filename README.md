@@ -32,6 +32,7 @@ docker run --rm -v $(pwd):/tmp primitive -i imgs/color-smoke.jpg -o out.gif -n 5
 ![animated gif](imgs/color-smoke.gif)
 
 ## TODO
-- [ ] Publish image to container registry to prevent users from having to build image
-- [ ] Create GitHub Actions workflow to publish container image
-- [ ] Automation container versioning
+- [x] Publish image to container registry to prevent users from having to build image
+- [x] Create GitHub Actions workflow to publish container image
+- [x] Automation container versioning
+- [ ] Add PR tests to validate container can build, run and output a valid image

@@ -21,13 +21,15 @@ Photo by <a href="https://unsplash.com/@pawel_czerwinski?utm_source=unsplash&utm
 
 **Circle Mode**
 ```sh
-docker run --rm -v $(pwd):/tmp primitive -i imgs/color-smoke.jpg -o out.jpg -n 100 -m 4
+docker run --rm -v $(pwd):/tmp ghcr.io/jveldboom/primitive-pictures-docker:latest \
+  -i imgs/color-smoke.jpg -o out.jpg -n 100 -m 4
 ```
 ![circle mode](imgs/color-smoke-circle.jpg)
 
 **Animated GIF**
 ```sh
-docker run --rm -v $(pwd):/tmp primitive -i imgs/color-smoke.jpg -o out.gif -n 500 -m 8
+docker run --rm -v $(pwd):/tmp ghcr.io/jveldboom/primitive-pictures-docker:latest \
+  -i imgs/color-smoke.jpg -o out.gif -n 500 -m 8
 ```
 ![animated gif](imgs/color-smoke.gif)
 

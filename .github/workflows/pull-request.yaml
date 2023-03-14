@@ -2,7 +2,7 @@
 name: pull-request
 
 on:
-  pull-request:
+  pull_request:
 
 jobs:
   release:
@@ -27,3 +27,8 @@ jobs:
             echo "filesize of $i was less than $min_filesize"
             exit 1
           fi
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: sample-image
+          path: *.jpg

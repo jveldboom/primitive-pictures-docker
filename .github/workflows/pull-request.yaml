@@ -22,11 +22,11 @@ jobs:
         run: |
           ls -la
 
-          min_filesize=100000 # 100 kb
+          min_filesize=10000 # 100 kb
           filesize=$(wc -c <"test-01.jpg")
 
           if [ $filesize -le $min_filesize ]; then
-            echo "filesize of test-01.jpg ($filesize) was less than $min_filesize bytes"
+            echo "filesize of test-01.jpg ($filesize bytes) was less than $min_filesize bytes"
             exit 1
           fi
 

@@ -20,8 +20,6 @@ jobs:
 
       - name: Check sample image size
         run: |
-          ls -la
-
           min_filesize=10000 # 100 kb
           filesize=$(wc -c <"test-01.jpg")
 

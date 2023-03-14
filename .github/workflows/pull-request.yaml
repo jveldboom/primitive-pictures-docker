@@ -1,0 +1,36 @@
+---
+name: pull-request
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build container image
+        run: docker build . --tag ghcr.io/${GITHUB_REPOSITORY}:latest
+
+      - name: Create sample image
+        run: |
+          docker run --rm -v $(pwd):/tmp ghcr.io/${GITHUB_REPOSITORY}:latest \
+            -i imgs/color-smoke.jpg -o test-01.jpg -n 100 -m 4
+
+      - name: Check sample image size
+        run: |
+          min_filesize=10000 # 100 kb
+          filesize=$(wc -c <"test-01.jpg")
+
+          if [ $filesize -le $min_filesize ]; then
+            echo "filesize of test-01.jpg ($filesize bytes) was less than $min_filesize bytes"
+            exit 1
+          fi
+
+      - name: Upload sample image
+        uses: actions/upload-artifact@v3
+        with:
+          name: sample-image
+          path: "*.jpg"
+          retention-days: 1

@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Build image
+      - name: Build container image
         run: docker build . --tag ghcr.io/${GITHUB_REPOSITORY}:latest
 
       - name: Create sample image
@@ -28,7 +28,8 @@ jobs:
             exit 1
           fi
 
-      - uses: actions/upload-artifact@v3
+      - name: Upload sample image
+        uses: actions/upload-artifact@v3
         with:
           name: sample-image
           path: "*.jpg"
